@@ -1,0 +1,263 @@
+:root {
+	--border-radius: 4px;
+	--color-blue: #0ea5e9;
+	--color-gray: #9ca3af;
+	--color-meta: #666;
+	--color-green: #0ca678;
+	--bg-color-btn-hover: #ebebeb;
+	--bg-color-new-state: hsl(45, 100%, 60%);
+	--bd-color-new-state: hsl(45, 100%, 50%);
+}
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+.app {
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+}
+#feeds		{ width: 20%; overflow-y: scroll; }
+#articles	{ width: 25%; overflow-y: scroll; }
+#article	{ width: 55%; overflow-y: scroll; }
+
+#feeds {
+	background-color: #f5f5f5;
+}
+#articles {
+	background-color: #fafafa;
+}
+
+#feeds h1 i.right {
+	color: var(--color-gray);
+	font-size: 1.3em;
+	margin-top: 2px;
+	margin-left: 6px;
+}
+#feeds h1 i.right:hover {
+	color: #333;
+	cursor: pointer;
+}
+#feeds h2 {
+	padding: 0 6px;
+	color: var(--color-gray);
+}
+#feeds li,
+#articles li {
+	cursor: pointer;
+	list-style-type: none;
+}
+
+#views i {
+	margin-right: 5px;
+	color: var(--color-gray);
+}
+
+.feed-title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.feed-count,
+.feed-updating,
+.view-count {
+	position: absolute;
+	top: 8px;
+	right: 6px;
+}
+.feed-actions {
+	position: absolute;
+	top: 2px;
+	right: 0;
+}
+
+.list li {
+	position: relative;
+	padding: 6px;
+	margin-bottom: 1px;
+	border-radius: var(--border-radius);
+}
+
+.list li:hover {
+	background-color: #ebebeb;
+}
+.list li:hover .feed-actions {
+	display: inline;
+	padding: 5px;
+	background-color: var(--bg-color-btn-hover);
+}
+.list li:hover .feed-count {
+	display: none;
+}
+
+.list .current,
+.list .current:hover,
+.list .current:hover span.feed-actions {
+	background-color: var(--bg-color-btn-hover);
+}
+
+.meta {
+	font-size: .8em;
+	color: var(--color-meta);
+}
+.meta a {
+	color: var(--color-blue);
+}
+
+#articles-list { margin-top: 0; }
+#articles-list li {
+	font-size: .9em;
+}
+#articles-list li:hover .art-actions {
+	display: inline;
+}
+
+.art-title {
+	display: block;
+}
+.unread .art-title {
+	font-weight: bold;
+}
+.art-actions {
+	position: absolute;
+	bottom: 6px;
+	right: 8px;
+}
+
+span.wbtn,
+i.wbtn {
+	border: none;
+	background: none;
+	padding: .3em .4em;
+	cursor: pointer;
+}
+span.wbtn:hover,
+i.wbtn:hover {
+	background: var(--bg-color-btn-hover);
+}
+span.wbtn:active,
+i.wbtn:active {
+	background: var(--bg-color-btn-hover);
+}
+
+#article header {
+	background-color: #f5f5f5;
+	border-radius: var(--border-radius);
+}
+
+i.ti {
+	vertical-align: text-bottom;
+	font-size: 1.4em;
+}
+
+.ti-trash,
+.ti-x {
+	color: #991B1B;
+}
+.ti-check {
+	color: var(--color-green);
+}
+i.ti-logo {
+	color: #d9730d;
+	vertical-align: bottom;
+}
+i.ti-pin-filled {
+	color: var(--color-green);
+}
+
+.wcallout {
+	padding: 10px;
+	background-color: #f8f8f8;
+	border-left: 3px solid #dedede;
+}
+
+.wcallout.wdanger {
+	background-color: rgba(255, 0, 0, 0.075);
+	border-color: firebrick;
+	color: firebrick;
+}
+
+.wcallout.wsuccess {
+	background-color: rgba(0, 255, 0, 0.075);
+	border-color: #390;
+	color: #390;
+}
+
+.modal {
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
+}
+.modal-box {
+	margin: 5% auto;
+	padding: 0;
+	background-color: #fefefe;
+	border-radius: var(--border-radius);
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+.modal-header {
+	margin-top: 0;
+	padding: 10px;
+	border-bottom: 1px solid #dce1e7;
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+	font-size: 2rem;
+}
+.modal-body {
+	padding: 20px;
+}
+.modal-footer {
+	padding: 10px;
+	background-color: rgb(246, 248, 251);
+	border-top: 1px solid #dce1e7;
+	border-bottom-left-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
+}
+
+@keyframes spinning {
+	to {
+		transform: rotate(360deg)
+			/* rtl:ignore */
+		;
+	}
+}
+.spin {
+	display: inline-block;
+	animation: spinning 1s linear infinite;
+}
+
+.bullet {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 6px;
+	border-radius: 10px;
+	background-color: #ebebeb;
+	border: 2px solid #e0e0e0;
+	vertical-align: baseline;
+}
+.unread .bullet {
+	background-color: hsla(199, 89%, 70%, 1);
+	border-color: var(--color-blue);
+}
+.new .bullet {
+	background-color: var(--bg-color-new-state);
+	border-color: var(--bd-color-new-state);
+}
+
+.badge-new {
+	padding: 0 6px;
+	background-color: var(--color-blue);
+	border-radius: 20px;
+	color: white;
+}
